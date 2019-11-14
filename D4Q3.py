@@ -4,6 +4,7 @@ def afficherGrille(grille):
     '''
     (list) -> None
     Affiche le grille de jeu Sudoku
+    
     Preconditions: grille est une reference a une matrice 9x9 qui contient déja des nombres de 1 à 9
     '''
     print("   ", end="")
