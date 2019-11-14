@@ -1,12 +1,18 @@
-#################################################
-#################ITI 1520########################
-#################################################
+#Cours ITI1520
+#Auteur : Dalia Sawaya -- Hened Saade
+#Numéro d’étudiant : 300111681 -- 300111592
+print("Auteur: Hened Saade.  Numéro d’étudiant: 300111592 ")
+print("Auteur: Dalia Sawaya. Numéro d’étudiant: 300111681")
 
-#Auteur: Hened Saade
-#Numéro d'étudiant: 300111592
+###########################################################################
+#########################   Devoir4-Question2    ##########################
+###########################################################################
 
 print("Auteur: Hened Saade")
 print("Numéro d'étudiant: 300111592")
+print("Auteur: Dalia Sawaya")
+print("Numéro d'étudiant: 300111681")
+
 
 def modifierMat(matrice):
     ''' list -> list

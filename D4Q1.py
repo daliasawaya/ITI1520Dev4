@@ -1,6 +1,6 @@
 #Cours ITI1520
-#Auteur : Dalia Sawaya
-#Numéro d’étudiant : 300111681
+#Auteur : Dalia Sawaya -- Hened Saade
+#Numéro d’étudiant : 300111681 -- 300111592
 print("Auteur: Dalia Sawaya. Numéro d’étudiant: 300111681")
 print("Auteur: Hened Saade.  Numéro d’étudiant: 300111592 ")
 
@@ -8,144 +8,116 @@ print("Auteur: Hened Saade.  Numéro d’étudiant: 300111592 ")
 #########################   Devoir4-Question1    ##########################
 ###########################################################################
 
-#fonction nommee calculePrix, partie a)
-#parametres: nom de l'article et la quantite
-#calcule le prix de la quantite de l'article choisi
-#retourne le prix 
-def calculePrix(article,quantite) :
+
+def calculPrix(article, quantite) :
+    #prend un article et la quantite demandee, et retourne le prix 
+    
     '''
     (str, int) -> float
     '''
-    if article == "bureau" :
-        prix = 75.9 * quantite
+    
+    global q
+    global p
 
-    if article == "chaise" :
-        prix = 50.9 * quantite
-
-    if article == "imprimante" :
-        prix = 32.5 * quantite
-
-    if article == "scanneur" :
-        prix = 28.0 * quantite
+    #cherche le prix de l'article dans le dict p et multiplie par la quantite
+    prix = p[article]*quantite
 
     return prix
 
-#fonction nommee calculTotal, partie b)
-#parametres: nom de 3 articles et leur quantite
-#invoque fonction 'calculePrix' 3 fois
-#calcule et retourne le prix totale
-def calculTotal(article1, quantite1, article2, quantite2, article3, quantite3) :
-    
-    prix1 = calculePrix(article1,quantite1)
-    prix2 = calculePrix(article2,quantite2)
-    prix3 = calculePrix(article3,quantite3)
-    
-    prix_total = prix1 + prix2 + prix3
 
-    return prix_total
+def calculTotal(article1, quantite1, article2, quantite2, article3, quantite3) :
+    #prend les 3 atricles et leur quantite, appelle la fonction calculPrix
+    #retourne le prix totale
+    
+    '''
+    (str, int, str, int, str, int) -> float
+    '''
+
+    #appele calculPrix pour calculer prix de chaque article et sa quantite
+    prix1 = calculPrix(article1, quantite1)
+    prix2 = calculPrix(article2, quantite2)
+    prix3 = calculPrix(article3, quantite3)
+
+    #ajoute tous les prix retournes ensemble
+    prixTot = prix1 + prix2 + prix3
+
+    return prixTot
+
 
 def validerCommande(article1, quantite1, article2, quantite2, article3, quantite3) :
+    '''
+    (str, int, str, int, str, int) -> bool
+    '''
 
-    #initialiser valide a True
-    valide = True
+    #prend les 3 atricles et leur quantite
+    #verifie si il y a assez d'articles dans dict q que quantite pour cet article
+    #retourne bool True pour oui et False pour non
     
-    #verifie si un des articles est le bureau,
-    #si oui: verifie si quantite est plus que 9
-    #si oui: retourne false
+    global q
+
+    #verifire si les articles existent dans dict q
+    if article1 not in q :
+        return False
+    elif article2 not in q :
+        return False
+    elif article3 not in q :
+        return False
+
+    #verifie si il y a assez de l'article dans dict q que veut l'usager
+    elif quantite1>q[article1] :
+        return False
+    elif quantite2>q[article2] :
+        return False
+    elif quantite3>q[article3] :
+        return False
+
+    #si aucune des conditions ci-haut est bonne, retourne True: commande est valide
+    else :
+        return True
+
+#PROGRAMME PRINCIPALE
+
+#cree les 2 dictionnaires
+q = {"bureau":9, "chaise":25, "imprimante":46, "scanneur":17}
+p = {"bureau":75.9, "chaise":50.9, "imprimante":32.5, "scanneur":28.0}
+
+#demande a l'usager pour entrer les articles et leur quantite
+a1 = input("Entrer 1er article: ")
+q1 = int(input("Entrer quantite de 1er article: "))
+a2 = input("Entrer 2eme article: ")
+q2 = int(input("Entrer quantite de 2eme article: "))
+a3 = input("Entrer 3eme article: ")
+q3 = int(input("Entrer quantite de 3eme article: "))
+
+#si la commande n'est pas valide
+if validerCommande(a1,q1,a2,q2,a3,q3) == False :
+   print("Votre commande est annulée. SVP, vérifier les articles ou les quantités.")
+   print("Les quantités et les articles disponibles sont:",q)
+
+#si la commande est valide
+   
+else :
+    print("Le prix total de votre commande est", calculTotal(a1,q1,a2,q2,a3,q3), "$")
+    print("Merci et à la prochaine.")
+
+    q[a1]=q[a1]-q1
+    q[a2]=q[a2]-q2
+    q[a3]=q[a3]-q3
+
+    print("Les quantités et les articles disponibles sont:",q)
+
     
-    if (article1 == "bureau") :
-        if quantite1>9 :
-            valide = False
-            
-    if (article2 == "bureau") :
-        if quantite2>9 :
-            valide = False
-        
-    if (article3 == "bureau") :
-        if quantite3>9 :
-            valide = False
-
-        
-    #verifie si un des articles est le bureau,
-    #si oui: verifie si quantite est plus que 25
-    #si oui: retourne false
-        
-    if (article1 == "chaise") :
-        if quantite1>25 :
-            valide = False
-
-    if (article2 == "chaise") :
-        if quantite2>25 :
-            valide = False
-        
-    if (article3 == "chaise") : 
-        if quantite3>25 :
-            valide = False
-
-    #verifie si un des articles est le bureau,
-    #si oui: verifie si quantite est plus que 46
-    #si oui: retourne false
-
-    if (article1 == "imprimante") :
-        if quantite1>46 :
-            valide = False
-
-    if (article2 == "imprimante") :
-        if quantite2>46 :
-            valide = False
-            
-    if (article3 == "imprimante") :
-        if quantite3>46 :
-            valide = False
-
-    #verifie si un des articles est le bureau,
-    #si oui: verifie si quantite est plus que 17
-    #si oui: retourne false
-        
-    if (article1 == "scanneur") :
-        if quantite1>17 :
-            valide = False
-
-    if (article2 == "scanneur") :
-        if quantite2>17 :
-            valide = False
-            
-    if (article3 == "scanneur") :
-        if quantite3>17 :
-            valide = False
-
-
-    #verifie si chaque article existe dans le magasin
-    #si non: valide = false
     
-    if (article1 != "bureau") and (article1 != "chaise") and (article1 != "imprimante") and (article1 != "scanneur") :
-       valide = False
-
-    if (article2 != "bureau") and (article2 != "chaise") and (article2 != "imprimante") and (article2 != "scanneur") :
-       valide = False
-
-    if (article3 != "bureau") and (article3 != "chaise") and (article3 != "imprimante") and (article3 != "scanneur") :
-       valide = False
-
-    return valide
-
-#demande a l'usager d'entrer les donnees
-A1 = input("Entrez le premier article: ")
-Q1 = int(input("Entrez la quantité de votre 1ere article: "))
-A2 = input("Entrez le deuxieme article: ")
-Q2 = int(input("Entrez la quantité de votre 2eme article: "))
-A3 = input("Entrez le troisieme article: ")
-Q3 = int(input("Entrez la quantité de votre 3eme article: "))
-
-#invoque methode validerCommande pour valider si les entrees de l'usager 
-commande_valide = validerCommande(A1, Q1, A2, Q2, A3, Q3)
-
-
-if commande_valide == True :
-    prixTot = calculTotal(A1, Q1, A2, Q2, A3, Q3)
-    str_prixTot = str(prixTot)
-    print("Le prix total de votre commande est : "+str_prixTot+"$. Merci et à la prochaine.") 
-
-if commande_valide == False :
-    print("Votre commande est annulée. SVP, vérifier les articles ou les quantités.")
     
+    
+    
+
+   
+   
+    
+    
+
+
+
+
+
