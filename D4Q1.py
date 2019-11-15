@@ -85,6 +85,7 @@ p = {"bureau":75.9, "chaise":50.9, "imprimante":32.5, "scanneur":28.0}
     
 a1 = input("Entrer 1er article: ")
 
+#vérifie si le input est un entier ou non, répète le boucle jusqu'à temps que l'input est un entier
 while True:
     try :
         q1 = int(input("Entrer quantite de 1er article: "))
@@ -94,6 +95,7 @@ while True:
     
 a2 = input("Entrer 2eme article: ")
 
+#vérifie si le input est un entier ou non, répète le boucle jusqu'à temps que l'input est un entier
 while True:
     try :
         q2 = int(input("Entrer quantite de 2eme article: "))
@@ -103,6 +105,7 @@ while True:
         
 a3 = input("Entrer 3eme article: ")
 
+#vérifie si le input est un entier ou non, répète le boucle jusqu'à temps que l'input est un entier
 while True:
     try :
         q3 = int(input("Entrer quantite de 3eme article: "))

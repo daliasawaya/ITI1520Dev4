@@ -65,6 +65,7 @@ print("Menu: 1- Commencer un nouveau jeu.")
 print("     ", "2- Continuer le jeu.")
 print("     ", "3- Quitter le jeu.")
 
+#vérifie si l'input est un entier qui respecte les bornes, continue le boucle jusqu'à temps que l'entrer est un entier positif qui respecte les bornes
 while True :
     try :
         choix = int(input("SVP entrez votre choix: 1, 2 ou 3: "))
@@ -90,34 +91,37 @@ while choix < 3 and choix > 0:
                     [2, 5, 0, 8, 4, 6, 9, 3, 1]]  # la seule matrice utilisé dans le programme.
       afficherGrille(grille)
 
+      #vérifie si l'input est un entier qui respecte les bornes, continue le boucle jusqu'à temps que l'entrer est un entier positif qui respecte les bornes
       while True :
         try :
             row = int(input("entrez votre choix de case ligne "))
             assert row > -1 and row < 9
             break
-        except ValueError :
+        except ValueError : #imprime cette exception si ce n'est pas un entier
             print("Pas un entier, essayez encore une fois")
-        except AssertionError :
+        except AssertionError : #imprime cette exception si ce n'est pas un entier qui respecte les restrictions
             print("Entre entier entre 0 et 8 seulement")
 
+      #vérifie si l'input est un entier qui respecte les bornes, continue le boucle jusqu'à temps que l'entrer est un entier positif qui respecte les bornes
       while True :
         try :
             col = int(input("entrez votre choix de case col "))
             assert col > -1 and col < 9
             break
-        except ValueError :
+        except ValueError : #imprime cette exception si ce n'est pas un entier
             print("Pas un entier, essayez encore une fois")
-        except AssertionError :
+        except AssertionError : #imprime cette exception si ce n'est pas un entier qui respecte les restrictions
             print("Entre entier entre 0 et 8 seulement")
 
+      #vérifie si l'input est un entier qui respecte les bornes, continue le boucle jusqu'à temps que l'entrer est un entier positif qui respecte les bornes
       while True :
         try :
             num = int(input("entrez votre choix de case num "))
             assert num > 0 and num < 10
             break
-        except ValueError :
+        except ValueError : #imprime cette exception si ce n'est pas un entier
             print("Pas un entier, essayez encore une fois")
-        except AssertionError :
+        except AssertionError : #imprime cette exception si ce n'est pas un entier qui respecte les restrictions
             print("Entre entier entre 1 et 9 seulement")
 
       
@@ -141,14 +145,16 @@ while choix < 3 and choix > 0:
          print("Menu: 1- Commencer un nouveau jeu.")
          print("     ", "2- Continuer le jeu.")
          print("     ", "3- Quitter le jeu.")
+
+         #vérifie si l'input est un entier qui respecte les bornes, continue le boucle jusqu'à temps que l'entrer est un entier positif qui respecte les bornes
          while True :
             try :
                 choix = int(input("SVP entrez votre choix: 1, 2 ou 3: "))
                 assert choix > 0 and choix < 4
                 break
-            except ValueError :
+            except ValueError : #imprime cette exception si ce n'est pas un entier
                 print("Pas un entier, essayez encore une fois")
-            except AssertionError :
+            except AssertionError : #imprime cette exception si ce n'est pas un entier qui respecte les restrictions
                 print("Entre entier entre 1 et 3 seulement")
 if choix==3:
     print("Au revoir")
