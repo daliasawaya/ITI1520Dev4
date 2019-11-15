@@ -31,7 +31,23 @@ def jouer(grille, row, col, num):
     grille est modifié (un element est ajouté dans la grille) si la case est valide est correcte.
     '''
     
-    # A COMPLETER
+    if verifierLigne(grille, row, num) == False :
+        print("F1 in joue")
+        return False
+    
+    if verifierCol(grille, col, num) == False :
+        print("F2 in joue")
+        return False
+
+    if verifierSousGrille(grille, row, col, num) == False:
+        print("F3 in joue")
+        return False
+
+    return True
+
+    
+
+#PROGRAMME PRINCIPALE
     
 # Créer le tableau de jeu (9 x 9)
 grille = [[5, 3, 8, 6, 9, 1, 0, 4, 7],
@@ -65,13 +81,17 @@ while choix < 3 and choix > 0:
       num = int(input("entrez votre choix de case num "))
       if grille[row][col] == 0:
           ajout = jouer(grille, row, col, num)
+          
           if ajout == True:
               print("Bravo!!")
           else:
               print("Echec :(")
+              
       else:
           print("Case deja rempli")
+          
       afficherGrille(grille)
+      
       if verifierGagner(grille) == True:
           print("Bravo!! Vous avez gagne")
           choix = -1
