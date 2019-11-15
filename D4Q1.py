@@ -82,12 +82,34 @@ q = {"bureau":9, "chaise":25, "imprimante":46, "scanneur":17}
 p = {"bureau":75.9, "chaise":50.9, "imprimante":32.5, "scanneur":28.0}
 
 #demande a l'usager pour entrer les articles et leur quantite
+    
 a1 = input("Entrer 1er article: ")
-q1 = int(input("Entrer quantite de 1er article: "))
+
+while True:
+    try :
+        q1 = int(input("Entrer quantite de 1er article: "))
+        break
+    except ValueError :
+        print("Pas un entier, essayez encore une fois")
+    
 a2 = input("Entrer 2eme article: ")
-q2 = int(input("Entrer quantite de 2eme article: "))
+
+while True:
+    try :
+        q2 = int(input("Entrer quantite de 2eme article: "))
+        break
+    except ValueError :
+        print("Pas un entier, essayez encore une fois")
+        
 a3 = input("Entrer 3eme article: ")
-q3 = int(input("Entrer quantite de 3eme article: "))
+
+while True:
+    try :
+        q3 = int(input("Entrer quantite de 3eme article: "))
+        break
+    except ValueError :
+        print("Pas un entier, essayez encore une fois")
+    
 
 #si la commande n'est pas valide
 if validerCommande(a1,q1,a2,q2,a3,q3) == False :

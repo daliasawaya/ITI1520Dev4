@@ -64,7 +64,18 @@ grille = [[5, 3, 8, 6, 9, 1, 0, 4, 7],
 print("Menu: 1- Commencer un nouveau jeu.")
 print("     ", "2- Continuer le jeu.")
 print("     ", "3- Quitter le jeu.")
-choix = int(input("SVP entrez votre choix: 1, 2 ou 3: "))
+
+while True :
+    try :
+        choix = int(input("SVP entrez votre choix: 1, 2 ou 3: "))
+        assert choix > 0 and choix < 4
+        break
+    except ValueError :
+        print("Pas un entier, essayez encore une fois")
+    except AssertionError :
+        print("Entre entier entre 1 et 3 seulement")
+    
+
 while choix < 3 and choix > 0:
       if choix == 1:
           # Créer le tableau de jeu (9 x 9)
@@ -78,9 +89,38 @@ while choix < 3 and choix > 0:
                     [9, 8, 3, 1, 2, 5, 6, 7, 4],
                     [2, 5, 0, 8, 4, 6, 9, 3, 1]]  # la seule matrice utilisé dans le programme.
       afficherGrille(grille)
-      row = int(input("entrez votre choix de case ligne "))
-      col = int(input("entrez votre choix de case col "))
-      num = int(input("entrez votre choix de case num "))
+
+      while True :
+        try :
+            row = int(input("entrez votre choix de case ligne "))
+            assert row > -1 and row < 9
+            break
+        except ValueError :
+            print("Pas un entier, essayez encore une fois")
+        except AssertionError :
+            print("Entre entier entre 0 et 8 seulement")
+
+      while True :
+        try :
+            col = int(input("entrez votre choix de case col "))
+            assert col > -1 and col < 9
+            break
+        except ValueError :
+            print("Pas un entier, essayez encore une fois")
+        except AssertionError :
+            print("Entre entier entre 0 et 8 seulement")
+
+      while True :
+        try :
+            num = int(input("entrez votre choix de case num "))
+            assert num > 0 and num < 10
+            break
+        except ValueError :
+            print("Pas un entier, essayez encore une fois")
+        except AssertionError :
+            print("Entre entier entre 1 et 9 seulement")
+
+      
       if grille[row][col] == 0:
           ajout = jouer(grille, row, col, num)
           
@@ -101,6 +141,14 @@ while choix < 3 and choix > 0:
          print("Menu: 1- Commencer un nouveau jeu.")
          print("     ", "2- Continuer le jeu.")
          print("     ", "3- Quitter le jeu.")
-         choix = int(input("SVP entrez votre choix: 1, 2 ou 3: "))
+         while True :
+            try :
+                choix = int(input("SVP entrez votre choix: 1, 2 ou 3: "))
+                assert choix > 0 and choix < 4
+                break
+            except ValueError :
+                print("Pas un entier, essayez encore une fois")
+            except AssertionError :
+                print("Entre entier entre 1 et 3 seulement")
 if choix==3:
     print("Au revoir")
