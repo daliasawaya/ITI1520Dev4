@@ -1,4 +1,14 @@
-﻿from jeuSudoku import *
+﻿#Cours ITI1520
+#Auteur : Dalia Sawaya -- Hened Saade
+#Numéro d’étudiant : 300111681 -- 300111592
+print("Auteur: Hened Saade.  Numéro d’étudiant: 300111592 ")
+print("Auteur: Dalia Sawaya. Numéro d’étudiant: 300111681")
+
+###########################################################################
+#########################   Devoir4-Question3    ##########################
+###########################################################################
+
+from jeuSudoku import *
 
 def afficherGrille(grille):
     '''
@@ -30,21 +40,13 @@ def jouer(grille, row, col, num):
     Preconditions: grille est une réference sur une liste de 9x9 contient seulement des nombres
     grille est modifié (un element est ajouté dans la grille) si la case est valide est correcte.
     '''
-    
-    if verifierLigne(grille, row, num) == False :
-        print("F1 in joue")
-        return False
-    
-    if verifierCol(grille, col, num) == False :
-        print("F2 in joue")
-        return False
 
-    if verifierSousGrille(grille, row, col, num) == False:
-        print("F3 in joue")
-        return False
-
-    return True
-
+    #si fonction verifier valide retourne True, change le 0 par le num de l'usager
+    if verifierValide(grille, row, col, num) == True :
+        grille[row][col] = num
+        return True #retourne True si verifier valide retourne True
+    else:
+        return False #retourne False si verifier valide ne retourne pas True
     
 
 #PROGRAMME PRINCIPALE
